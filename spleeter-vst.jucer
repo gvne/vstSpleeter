@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="bZFDw6" name="spleeter-vst" projectType="audioplug" jucerVersion="5.4.7"
+              pluginFormats="buildVST3" pluginVST3Category="Filter,Fx,Up-Downmix">
+  <MAINGROUP id="ivnSRh" name="spleeter-vst">
+    <GROUP id="{073EE4F9-0347-2967-7DDE-C84EB79D6CA9}" name="Source">
+      <FILE id="TSPpQC" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="rR0DVo" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="KyXOiD" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="BV9huR" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraLinkerFlags="-L../../external/spleeterpp/lib"
+               postbuildCommand="if [[ $TARGETNAME != *&quot;Shared Code&quot;* ]]; then&#10; &#10;TENSORFLOW_LIB_PATH=$CODESIGNING_FOLDER_PATH/Contents/MacOS/libtensorflow.1.dylib&#10;rm -rf $TENSORFLOW_LIB_PATH&#10;cp ../../external/spleeterpp/lib/libtensorflow.1.dylib $TENSORFLOW_LIB_PATH&#10;&#10;TENSORFLOW_FRAMEWORK_PATH=$CODESIGNING_FOLDER_PATH/Contents/MacOS/libtensorflow_framework.1.dylib&#10;rm -rf $TENSORFLOW_FRAMEWORK_PATH&#10;cp ../../external/spleeterpp/lib/libtensorflow_framework.1.dylib $TENSORFLOW_FRAMEWORK_PATH&#10;&#10;MODELS_PATH=$CODESIGNING_FOLDER_PATH/Contents/Resources/models&#10;rm -rf $MODELS_PATH&#10;cp -r ../../external/spleeterpp/models/filter $MODELS_PATH&#10;&#10;fi"
+               externalLibraries="tensorflow.1&#10;tensorflow_framework.1&#10;spleeter_filter&#10;spleeter_common&#10;rtff&#10;artff&#10;mkl_core&#10;mkl_intel_lp64&#10;mkl_sequential&#10;"
+               extraCompilerFlags="-I../../external/spleeterpp/include&#10;-I../../external/eigen">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" customXcodeFlags="LD_RUNPATH_SEARCH_PATHS=@loader_path"/>
+        <CONFIGURATION isDebug="0" name="Release" customXcodeFlags="LD_RUNPATH_SEARCH_PATHS=@loader_path"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../Applications/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+</JUCERPROJECT>
